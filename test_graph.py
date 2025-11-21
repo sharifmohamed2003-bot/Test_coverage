@@ -91,11 +91,11 @@ class TestShortestPaths(unittest.TestCase):
 
     def test_shortest_paths(self):
         dist = self.g.shortest_paths("A")
-        expected = {"A": 0, "B": 1, "C": 1, "D": 2, "E": 3, "F": 4}
+        expected = {"A": ['A'], "B":  ['A', 'B'], "C": ['A', 'C'], "D": ['A', 'B', 'D'], "E": ['A', 'B', 'D', 'E'], "F": ['A', 'B', 'D', 'E', 'F']}
         self.assertEqual(dist, expected)
 
     def test_shortest_path_length(self):
-        self.assertEqual(self.g.shortest_path_length("A", "F"), 4)
+        self.assertEqual(self.g.shortest_path_length("A", "F"), ['A', 'B', 'D', 'E', 'F'])
         self.assertEqual(self.g.shortest_path_length("A", "Z"), "unreachable")
 
 
